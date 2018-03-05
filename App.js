@@ -10,7 +10,7 @@ export default class App extends Component {
     const store = createStore(reducers, {}, applyMiddleware(ReduxThunk));
 
     return (
-      <Provider>
+      <Provider store={store}>
         <Router />
       </Provider>
     );
