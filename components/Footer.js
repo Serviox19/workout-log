@@ -7,19 +7,15 @@ export default class FooterTabs extends Component {
     return (
       <Footer>
         <FooterTab>
-          <Button onPress={() => Actions.popTo('logs')}>
+          <Button onPress={() => Actions.logs()}>
             <Icon name="ios-list-box" />
             <Text>Logs</Text>
           </Button>
-          <Button onPress={() => Actions.popTo('workout')}>
+          <Button onPress={() => Actions.workout()}>
             <Icon name="ios-add-circle" />
             <Text>Workout</Text>
           </Button>
-          <Button onPress={() => Actions.popTo('charts')}>
-            <Icon name="ios-pie" />
-            <Text>Charts</Text>
-          </Button>
-          <Button onPress={() => Actions.popTo('profile')}>
+          <Button onPress={() => Actions.profile()}>
             <Icon name="ios-contact" />
             <Text>Profile</Text>
           </Button>

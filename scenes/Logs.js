@@ -7,7 +7,7 @@ export default class Logs extends Component {
     return (
       <Container>
         <Content padder>
-          <Text>Logs</Text>
+          <Text>See your Logs here!</Text>
         </Content>
         <FooterTabs />
       </Container>

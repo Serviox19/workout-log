@@ -7,7 +7,7 @@ export default class Profile extends Component {
     return (
       <Container>
         <Content padder>
-          <Text>Profile Page</Text>
+          <Text>Profile Page!</Text>
         </Content>
         <FooterTabs />
       </Container>
