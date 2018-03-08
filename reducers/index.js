@@ -1,5 +1,8 @@
 import { combineReducers } from 'redux';
+import ExerciseReducer from './ExercisesReducer';
+import ExerciseDetailReducer from './ExerciseDetailReducer';
 
 export default combineReducers({
-  exercises: () => []
+  exercises: ExerciseReducer,
+  logs: ExerciseDetailReducer
 });
