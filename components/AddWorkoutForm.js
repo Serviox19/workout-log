@@ -7,14 +7,30 @@ export default class AddWorkout extends Component {
     super(props);
 
     this.state = {
-      selected: null
+      selectedCategory: null,
+      exercise: ''
     }
+    this.addWorkout = this.addWorkout.bind(this);
   }
 
+  //Get Selected Category
   onCategoryChange(value: string) {
     this.setState({
       selectedCategory: value
     });
+  }
+
+  //Get exercise text input
+  onExerciseChange(text) {
+    this.setState({ exercise: text });
+  }
+
+  //Do something with the data
+  addWorkout() {
+    console.log(`Category: ${this.state.selectedCategory},
+    Exercise: ${this.state.exercise}`);
+    this.setState({ selectedCategory: null });
+    this.setState({ exercise: '' });
   }
 
   render() {
@@ -23,7 +39,7 @@ export default class AddWorkout extends Component {
         <Form>
           <Picker
               renderHeader={backAction =>
-                <Header style={{ backgroundColor: "#f44242" }}>
+                <Header style={{ backgroundColor: "rgb(0,122,255)" }}>
                   <Left>
                     <Button transparent onPress={backAction}>
                       <Icon name="arrow-back" style={{ color: "#fff" }} />
@@ -36,6 +52,7 @@ export default class AddWorkout extends Component {
                 </Header>}
             mode="dropdown"
             placeholder="Select Category"
+            note={false}
             selectedValue={this.state.selectedCategory}
             onValueChange={this.onCategoryChange.bind(this)}
           >
@@ -48,10 +65,14 @@ export default class AddWorkout extends Component {
           </Picker>
           <Item inlineLabel>
             <Label>Exercise</Label>
-            <Input />
+            <Input
+              placeholder="Enter Exercise Name"
+              onChangeText={this.onExerciseChange.bind(this)}
+              value={this.state.exercise}
+            />
           </Item>
-          <Button style={styles.buttonStyle} block light>
-            <Text>Light</Text>
+          <Button onPress={this.addWorkout} style={styles.buttonStyle} block light>
+            <Text>Add Workout</Text>
           </Button>
         </Form>
       </View>
