@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import ExerciseReducer from './ExercisesReducer';
+import ExerciseReducer from './ExerciseReducer';
 import ExerciseDetailReducer from './ExerciseDetailReducer';
 
 export default combineReducers({

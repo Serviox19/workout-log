@@ -10,8 +10,11 @@ export const exercisesFetch = () => {
 
 }
 
-export const exerciseCreate = () => {
-
+export const exerciseCreate = ({ title }) => {
+  return (dispatch) => {
+    firebase.database().reference(`/`)
+    .push({ title })
+  }
 }
 
 export const exerciseSave = () => {
