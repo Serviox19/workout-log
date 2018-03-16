@@ -17,7 +17,7 @@ class RouterComponent extends Component {
             title="Home"
             renderBackButton={null}
             renderBackButton={()=>(null)}
-            onRight={() => Actions.refresh({ showModal: true })}
+            onRight={() => Actions.refresh({ toggleModal: () => {} })}
             rightTitle="Add"
             rightButtonTextStyle={{ marginRight: 15 }}
           />
