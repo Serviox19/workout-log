@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Container, Content, Text } from 'native-base';
+import { Container, Content, Text, Icon } from 'native-base';
 import { View, Modal, TouchableHighlight } from 'react-native';
 import FooterTabs from '../components/Footer';
 import { Actions } from 'react-native-router-flux';
+import AddWorkout from '../components/AddWorkoutForm';
 
 export default class Workout extends Component {
   constructor(props) {
@@ -36,15 +37,17 @@ export default class Workout extends Component {
               transparent={false}
               visible={this.state.modalVisible}
               >
-              <View style={{marginTop: 50}}>
-                <View>
+              <View style={styles.modalContainer}>
+                <View style={styles.closeView}>
                   <TouchableHighlight
                     onPress={() => {
                       this.setModalVisible(!this.state.modalVisible);
                     }}>
-                    <Text>Hide Modal</Text>
+                    <Icon name='ios-close'
+                      style={{fontSize: 50, color: 'black'}}/>
                   </TouchableHighlight>
                 </View>
+                <AddWorkout />
               </View>
             </Modal>
           </View>
@@ -52,5 +55,17 @@ export default class Workout extends Component {
         <FooterTabs />
       </Container>
     );
+  }
+}
+
+const styles = {
+  modalContainer: {
+    marginTop: 50,
+    flexDirection: 'column'
+  },
+  closeView: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    marginRight: 25
   }
 }
