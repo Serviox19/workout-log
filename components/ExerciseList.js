@@ -9,7 +9,10 @@ class ExerciseList extends Component {
   render() {
     return (
       <View>
-        <Text>List available exercises!</Text>
+        <Text
+          style={{ textAlign: 'center' }}>
+          List available exercises!
+        </Text>
       </View>
     );
   }

@@ -37,34 +37,37 @@ export default class AddWorkout extends Component {
     return (
       <View>
         <Form>
-          <Picker
-              renderHeader={backAction =>
-                <Header style={{ backgroundColor: "rgb(0,122,255)" }}>
-                  <Left>
-                    <Button transparent onPress={backAction}>
-                      <Icon name="arrow-back" style={{ color: "#fff" }} />
-                    </Button>
-                  </Left>
-                  <Body style={{ flex: 3 }}>
-                    <Title style={{ color: "#fff" }}>Select Body Part</Title>
-                  </Body>
-                  <Right />
-                </Header>}
-            mode="dropdown"
-            placeholder="Select Category"
-            note={false}
-            selectedValue={this.state.selectedCategory}
-            onValueChange={this.onCategoryChange.bind(this)}
-          >
-            <Item label="Chest" value="chest" />
-            <Item label="Back" value="back" />
-            <Item label="Shoulders" value="shoulders" />
-            <Item label="Legs" value="legs" />
-            <Item label="Arms" value="arms" />
-            <Item label="Abs" value="abs" />
-          </Picker>
+          <Item>
+            <Label style={{ color: "#000" }}>Category</Label>
+            <Picker
+                renderHeader={backAction =>
+                  <Header style={{ backgroundColor: "rgb(0,122,255)" }}>
+                    <Left>
+                      <Button transparent onPress={backAction}>
+                        <Icon name="arrow-back" style={{ color: "#fff" }} />
+                      </Button>
+                    </Left>
+                    <Body style={{ flex: 3 }}>
+                      <Title style={{ color: "#fff" }}>Select Body Part</Title>
+                    </Body>
+                    <Right />
+                  </Header>}
+              mode="dropdown"
+              placeholder="Select Category"
+              note={false}
+              selectedValue={this.state.selectedCategory}
+              onValueChange={this.onCategoryChange.bind(this)}
+            >
+              <Item label="Chest" value="chest" />
+              <Item label="Back" value="back" />
+              <Item label="Shoulders" value="shoulders" />
+              <Item label="Legs" value="legs" />
+              <Item label="Arms" value="arms" />
+              <Item label="Abs" value="abs" />
+            </Picker>
+          </Item>
           <Item inlineLabel>
-            <Label>Exercise</Label>
+            <Label style={{ color: "#000" }}>Exercise</Label>
             <Input
               placeholder="Enter Exercise Name"
               onChangeText={this.onExerciseChange.bind(this)}

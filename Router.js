@@ -9,7 +9,7 @@ class RouterComponent extends Component {
 
   render() {
     return (
-      <Router sceneStyle={{ paddingTop: 65 }}>
+      <Router sceneStyle={{ backgroundColor: '#E2DADB' }}>
         <Scene key="root">
           <Scene
             key="workout"
@@ -25,13 +25,13 @@ class RouterComponent extends Component {
             key="logs"
             component={Logs}
             title="Workout Logs"
-            renderBackButton={()=>(null)}
+            renderBackButton={null}
           />
           <Scene
             key="profile"
             component={Profile}
             title="Profile Page"
-            renderBackButton={()=>(null)}
+            renderBackButton={null}
           />
         </Scene>
       </Router>

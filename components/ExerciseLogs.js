@@ -6,14 +6,17 @@ class ExerciseLogs extends Component {
     super(props);
 
     this.state = {
-      curentExercise = {}
+      curentExercise: ''
     }
   }
 
   render() {
     return (
       <View>
-        <Text>List Details for certain exercise</Text>
+        <Text
+          style={{ textAlign: 'center' }}>
+          List Details for certain exercise
+        </Text>
       </View>
     );
   }

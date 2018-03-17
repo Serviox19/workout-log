@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
-import { Container, Content, Text } from 'native-base';
+import { Text } from 'react-native';
+import { Container, Content } from 'native-base';
 import FooterTabs from '../components/Footer';
+import ExerciseLogs from '../components/ExerciseLogs';
 
 export default class Logs extends Component {
   render() {
     return (
-      <Container>
+      <Container style={{ paddingTop: 20 }}>
         <Content padder>
-          <Text>See your Logs here!</Text>
+          <Text style={{ textAlign: 'center' }}>See your Logs here!</Text>
         </Content>
         <FooterTabs />
       </Container>

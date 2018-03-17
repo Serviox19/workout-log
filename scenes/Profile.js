@@ -5,9 +5,9 @@ import FooterTabs from '../components/Footer';
 export default class Profile extends Component {
   render() {
     return (
-      <Container>
+      <Container style={{ paddingTop: 20 }}>
         <Content padder>
-          <Text>Profile Page!</Text>
+          <Text style={{ textAlign: 'center' }}>Profile Page!</Text>
         </Content>
         <FooterTabs />
       </Container>
