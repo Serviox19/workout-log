@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { View, Modal, TouchableHighlight } from 'react-native';
+import { View, Modal, TouchableOpacity } from 'react-native';
 import { Icon } from 'native-base';
 import AddWorkout from './AddWorkoutForm';
 
 export const ModalComponent = ({ modalVisible, toggleModal }) => {
   return (
-    <View style={{marginTop: 22}}>
+    <View>
       <Modal
         animationType="slide"
         transparent={false}
@@ -13,11 +13,11 @@ export const ModalComponent = ({ modalVisible, toggleModal }) => {
         >
         <View style={styles.modalContainer}>
           <View style={styles.closeView}>
-            <TouchableHighlight
+            <TouchableOpacity
               onPress={toggleModal}>
               <Icon name='ios-close'
                 style={{fontSize: 50, color: 'black'}}/>
-            </TouchableHighlight>
+            </TouchableOpacity>
           </View>
           <AddWorkout />
         </View>
@@ -28,7 +28,7 @@ export const ModalComponent = ({ modalVisible, toggleModal }) => {
 
 const styles = {
   modalContainer: {
-    marginTop: 50,
+    marginTop: 20,
     flexDirection: 'column'
   },
   closeView: {

@@ -40,18 +40,18 @@ export default class AddWorkout extends Component {
           <Item>
             <Label style={{ color: "#000" }}>Category</Label>
             <Picker
-                renderHeader={backAction =>
-                  <Header style={{ backgroundColor: "rgb(0,122,255)" }}>
-                    <Left>
-                      <Button transparent onPress={backAction}>
-                        <Icon name="arrow-back" style={{ color: "#fff" }} />
-                      </Button>
-                    </Left>
-                    <Body style={{ flex: 3 }}>
-                      <Title style={{ color: "#fff" }}>Select Body Part</Title>
-                    </Body>
-                    <Right />
-                  </Header>}
+              renderHeader={backAction =>
+                <Header style={{ backgroundColor: "rgb(0,122,255)" }}>
+                  <Left>
+                    <Button transparent onPress={backAction}>
+                      <Icon name="arrow-back" style={{ color: "#fff" }} />
+                    </Button>
+                  </Left>
+                  <Body style={{ flex: 3 }}>
+                    <Title style={{ color: "#fff" }}>Select Body Part</Title>
+                  </Body>
+                  <Right />
+                </Header>}
               mode="dropdown"
               placeholder="Select Category"
               note={false}

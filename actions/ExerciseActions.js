@@ -7,7 +7,26 @@ import {
 } from './types';
 
 export const exercisesFetch = () => {
-
+  return {
+    type: EXERCISES_FETCH,
+    payload: [
+      { "exercises": {
+        "Chest": [],
+        "Back": [],
+        "Shoulders": [],
+        "Legs": [],
+        "Arms": [],
+        "Abs": []
+      }
+      }
+    ]
+  }
+  // return (dispatch) => {
+  //   firebase.database().ref(`/exercises/`)
+  //   .on('value', data => {
+  //     dispatch({ type: EXERCISES_FETCH, payload: data.val() })
+  //   })
+  // }
 }
 
 export const exerciseCreate = ({ title }) => {

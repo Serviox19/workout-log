@@ -4,6 +4,7 @@ import Workout from './scenes/Workout';
 import Logs from './scenes/Logs';
 import Profile from './scenes/Profile';
 import { Actions } from 'react-native-router-flux';
+import { Button, Icon } from 'native-base';
 
 class RouterComponent extends Component {
 
@@ -16,7 +17,7 @@ class RouterComponent extends Component {
             component={Workout}
             title="Home"
             renderBackButton={null}
-            renderBackButton={()=>(null)}
+            renderBackButton={() => (null)}
             onRight={() => Actions.refresh({ toggleModal: () => {} })}
             rightTitle="Add"
             rightButtonTextStyle={{ marginRight: 15 }}
@@ -25,13 +26,13 @@ class RouterComponent extends Component {
             key="logs"
             component={Logs}
             title="Workout Logs"
-            renderBackButton={null}
+            renderBackButton={() => null}
           />
           <Scene
             key="profile"
             component={Profile}
             title="Profile Page"
-            renderBackButton={null}
+            renderBackButton={() => null}
           />
         </Scene>
       </Router>
