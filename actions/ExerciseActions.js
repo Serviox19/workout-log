@@ -10,31 +10,17 @@ export const exercisesFetch = () => {
   return {
     type: EXERCISES_FETCH,
     payload: [
-      { "exercises": {
-        "Chest": [],
-        "Back": [],
-        "Shoulders": [],
-        "Legs": [],
-        "Arms": [],
-        "Abs": []
-      }
-      }
+      { type: "Chest", "exercises": [], "logs": [] },
+      { type: "Back", "exercises": [], "logs": [] },
+      { type: "Shoulders", "exercises": [], "logs": [] },
+      { type: "Legs", "exercises": [], "logs": [] },
+      { type: "Arms", "exercises": [], "logs": [] },
+      { type: "Abs", "exercises": [], "logs": [] }
     ]
   }
-  // return (dispatch) => {
-  //   firebase.database().ref(`/exercises/`)
-  //   .on('value', data => {
-  //     dispatch({ type: EXERCISES_FETCH, payload: data.val() })
-  //   })
-  // }
 }
 
-export const exerciseCreate = ({ title }) => {
-  return (dispatch) => {
-    firebase.database().reference(`/`)
-    .push({ title })
-  }
-}
+export const exerciseCreate = () => {}
 
 export const exerciseSave = () => {
 
