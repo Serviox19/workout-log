@@ -14,42 +14,33 @@ class ExerciseList extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props.exercises);
+    // console.log(this.props.exercises);
   }
 
-  // // alternate rendering
-  // renderListItem() {
-  //   const exercise = this.props.exercises;
-  //   return Object.keys(exercise).map(function(key) {
-  //     return (
-  //       <ListItem
-  //         onPress={() => console.log('pressed list item')}>
-  //         <Text>{exercise[key].type}</Text>
-  //       </ListItem>
-  //     );
-  //   });
-  // }
+  //alternate rendering
+  renderListItem() {
+    const exercises = this.props.exercises;
+    return Object.keys(exercises).map(function(key) {
+      return (
+        <ListItem
+          onPress={() => console.log(key)}>
+          <Body>
+            <Text>{exercises[key].type.charAt(0).toUpperCase() + exercises[key].type.substr(1)}</Text>
+          </Body>
+          <Right>
+            <Icon ios='ios-arrow-forward' android='arrow-right' />
+          </Right>
+        </ListItem>
+      );
+    });
+  }
 
   render() {
     return (
       <View>
         <List
-          dataArray={this.props.exercises}
-          button={true}
-          renderRow={(exercise) =>
-            <ListItem
-              icon
-              onPress={() => console.log('hit list btn')}>
-              <Body>
-                <Text>{
-                  //capitalize first letter
-                  exercise.type.charAt(0).toUpperCase() + exercise.type.substr(1)}</Text>
-              </Body>
-              <Right>
-                <Icon ios='ios-arrow-forward' android='arrow-right' />
-              </Right>
-            </ListItem>
-          }>
+          button={true}>
+          {this.renderListItem()}
         </List>
       </View>
     );
