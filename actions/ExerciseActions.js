@@ -9,23 +9,33 @@ import {
 export const exercisesFetch = () => {
   return {
     type: EXERCISES_FETCH,
-    payload: [
-      { type: "Chest", "exercises": [], "logs": [] },
-      { type: "Back", "exercises": [], "logs": [] },
-      { type: "Shoulders", "exercises": [], "logs": [] },
-      { type: "Legs", "exercises": [], "logs": [] },
-      { type: "Arms", "exercises": [], "logs": [] },
-      { type: "Abs", "exercises": [], "logs": [] }
-    ]
+    payload: {
+      "categories": [
+        { type: "Chest", "exercises": [], "logs": [] },
+        { type: "Back", "exercises": [], "logs": [] },
+        { type: "Shoulders", "exercises": [], "logs": [] },
+        { type: "Legs", "exercises": [], "logs": [] },
+        { type: "Arms", "exercises": [], "logs": [] },
+        { type: "Abs", "exercises": [], "logs": [] }
+      ]
+    }
   }
 }
 
-export const exerciseCreate = () => {}
+export const exerciseCreate = ({ category, name }) => {
+  return (dispatch) => {
+    console.log(category);
+    console.log(name);
 
-export const exerciseSave = () => {
-
+    firebase.database().ref(`/exercises`)
+    .push({ category, name })
+    .then(() => {
+      dispatch({ type: EXERCISE_CREATE });
+      Actions.workout({ type: 'reset' });
+    })
+  }
 }
 
-export const exerciseDelete = () => {
+export const exerciseSave = () => {}
 
-}
+export const exerciseDelete = () => {}

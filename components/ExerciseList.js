@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
-import { List, ListItem } from 'native-base';
+import { Icon, List, ListItem, Left, Body, Right } from 'native-base';
 import { connect } from 'react-redux';
 import { exercisesFetch } from '../actions/ExerciseActions';
 
@@ -17,24 +17,37 @@ class ExerciseList extends Component {
     console.log(this.props.exercises);
   }
 
-  renderListItem() {
-    const exercise = this.props.exercises;
-    return Object.keys(exercise).map(function(key) {
-      return (
-        <ListItem
-          button={true}
-          onPress={() => console.log('pressed list item')}>
-          <Text>{exercise[key].type}</Text>
-        </ListItem>
-      );
-    });
-  }
+  // // alternate rendering
+  // renderListItem() {
+  //   const exercise = this.props.exercises;
+  //   return Object.keys(exercise).map(function(key) {
+  //     return (
+  //       <ListItem
+  //         onPress={() => console.log('pressed list item')}>
+  //         <Text>{exercise[key].type}</Text>
+  //       </ListItem>
+  //     );
+  //   });
+  // }
 
   render() {
     return (
       <View>
-        <List>
-          {this.renderListItem()}
+        <List
+          dataArray={this.props.exercises}
+          button={true}
+          renderRow={(exercise) =>
+            <ListItem
+              icon
+              onPress={() => console.log('hit list btn')}>
+              <Body>
+                <Text>{exercise.type}</Text>
+              </Body>
+              <Right>
+                <Icon ios='ios-arrow-forward' android='arrow-right' />
+              </Right>
+            </ListItem>
+          }>
         </List>
       </View>
     );

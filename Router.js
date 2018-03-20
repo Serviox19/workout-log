@@ -10,7 +10,7 @@ class RouterComponent extends Component {
 
   render() {
     return (
-      <Router sceneStyle={{ backgroundColor: '#E2DADB' }}>
+      <Router sceneStyle={{ backgroundColor: '#FFFFFF' }}>
         <Scene key="root">
           <Scene
             key="workout"

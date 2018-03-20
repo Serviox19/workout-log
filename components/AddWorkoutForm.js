@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { Header, Left, Right, Body, Icon, Title, Form, Item, Input, Label, Button, Picker } from 'native-base';
+import { connect } from 'react-redux';
+import { exerciseCreate } from '../actions/ExerciseActions';
+import firebase from 'firebase';
 
-export default class AddWorkout extends Component {
+class AddWorkout extends Component {
   constructor(props) {
     super(props);
 
@@ -27,8 +30,10 @@ export default class AddWorkout extends Component {
 
   //Do something with the data
   addWorkout() {
-    console.log(`Category: ${this.state.selectedCategory},
-    Exercise: ${this.state.exercise}`);
+    const category = this.state.selectedCategory;
+    const name = this.state.exercise;
+
+    this.props.exerciseCreate({ category, name });
     this.setState({ selectedCategory: null });
     this.setState({ exercise: '' });
   }
@@ -75,13 +80,21 @@ export default class AddWorkout extends Component {
             />
           </Item>
           <Button onPress={this.addWorkout} style={styles.buttonStyle} block light>
-            <Text>Add Workout</Text>
+            <Text>Add Exercise</Text>
           </Button>
         </Form>
       </View>
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  const { category, name } = state.exercises;
+
+  return { category, name };
+}
+
+export default connect(mapStateToProps, { exerciseCreate })(AddWorkout);
 
 const styles = {
   viewStyle: {
