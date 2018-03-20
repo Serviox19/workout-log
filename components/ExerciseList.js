@@ -41,7 +41,9 @@ class ExerciseList extends Component {
               icon
               onPress={() => console.log('hit list btn')}>
               <Body>
-                <Text>{exercise.type}</Text>
+                <Text>{
+                  //capitalize first letter
+                  exercise.type.charAt(0).toUpperCase() + exercise.type.substr(1)}</Text>
               </Body>
               <Right>
                 <Icon ios='ios-arrow-forward' android='arrow-right' />

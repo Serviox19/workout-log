@@ -7,28 +7,22 @@ import {
 } from './types';
 
 export const exercisesFetch = () => {
-  return {
-    type: EXERCISES_FETCH,
-    payload: {
-      "categories": [
-        { type: "Chest", "exercises": [], "logs": [] },
-        { type: "Back", "exercises": [], "logs": [] },
-        { type: "Shoulders", "exercises": [], "logs": [] },
-        { type: "Legs", "exercises": [], "logs": [] },
-        { type: "Arms", "exercises": [], "logs": [] },
-        { type: "Abs", "exercises": [], "logs": [] }
-      ]
-    }
+  return (dispatch) => {
+    firebase.database().ref('/exercises')
+    .on('value', snapshot => {
+      dispatch({ type: EXERCISES_FETCH, payload: snapshot.val() })
+      Actions.workout({ type: 'reset' });
+    })
   }
 }
 
-export const exerciseCreate = ({ category, name }) => {
+export const exerciseCreate = ({ type, exercise }) => {
   return (dispatch) => {
-    console.log(category);
-    console.log(name);
+    console.log(type);
+    console.log(exercise);
 
     firebase.database().ref(`/exercises`)
-    .push({ category, name })
+    .push({ type, exercise })
     .then(() => {
       dispatch({ type: EXERCISE_CREATE });
       Actions.workout({ type: 'reset' });

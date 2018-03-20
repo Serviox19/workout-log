@@ -8,7 +8,7 @@ const INITIAL_STATE = {};
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case EXERCISES_FETCH:
-      return action.payload.categories;
+      return action.payload;
     case EXERCISE_CREATE:
       return INITIAL_STATE;
     default:

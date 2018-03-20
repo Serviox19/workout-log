@@ -21,7 +21,12 @@ class RouterComponent extends Component {
             onRight={() => Actions.refresh({ toggleModal: () => {} })}
             rightTitle="Add"
             rightButtonTextStyle={{ marginRight: 15 }}
-          />
+          >
+            <Scene
+              key="exercises-list"
+              title="Exercises"
+            />
+          </Scene>
           <Scene
             key="logs"
             component={Logs}

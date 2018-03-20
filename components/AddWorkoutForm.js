@@ -30,10 +30,10 @@ class AddWorkout extends Component {
 
   //Do something with the data
   addWorkout() {
-    const category = this.state.selectedCategory;
-    const name = this.state.exercise;
+    const type = this.state.selectedCategory;
+    const exercise = this.state.exercise;
 
-    this.props.exerciseCreate({ category, name });
+    this.props.exerciseCreate({ type, exercise });
     this.setState({ selectedCategory: null });
     this.setState({ exercise: '' });
   }
