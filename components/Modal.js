@@ -19,7 +19,10 @@ export const ModalComponent = ({ modalVisible, toggleModal }) => {
                 style={{fontSize: 50, color: 'black'}}/>
             </TouchableOpacity>
           </View>
-          <AddWorkout />
+          <AddWorkout
+            addExercise={toggleModal}
+            sendError={(err) => console.log(err)}
+          />
         </View>
       </Modal>
     </View>

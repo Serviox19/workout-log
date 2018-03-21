@@ -21,8 +21,7 @@ export const exerciseCreate = ({ type, exercise }) => {
     console.log('Type: ' + type);
     console.log('Exercise: ' + exercise);
 
-    let dbRef = firebase.database().ref('/exercises')
-    let exists;
+    let dbRef = firebase.database().ref('/exercises');
 
     dbRef.once("value").then(function(exerciseTypes) {
       return exerciseTypes.forEach(function(snapshot) {
@@ -32,26 +31,10 @@ export const exerciseCreate = ({ type, exercise }) => {
             console.log('just add the workout');
           } else {
             console.log('add new type');
-            firebase.database().ref('/exercises').set({ type })
-            .then(() => {
-              dispatch({ type: EXERCISE_CREATE });
-              Actions.workout({ type: 'reset' });
-            });
           }
         });
       });
     });
-
-    // if (exists) {
-    //   console.log(`yeah theres a record of ${type}, just add ${exercise}`);
-    // } else {
-    //   console.log(`no record of ${type}, add it with ${exercise}`);
-    //   dbRef.push({ type, exercise })
-    //   .then(() => {
-    //     dispatch({ type: EXERCISE_CREATE });
-    //     Actions.workout({ type: 'reset' });
-    //   })
-    // }
   }
 }
 

@@ -33,9 +33,14 @@ class AddWorkout extends Component {
     const type = this.state.selectedCategory;
     const exercise = this.state.exercise;
 
-    this.props.exerciseCreate({ type, exercise });
-    this.setState({ selectedCategory: null });
-    this.setState({ exercise: '' });
+    if (type && exercise !== null) {
+      this.props.exerciseCreate({ type, exercise });
+      this.setState({ selectedCategory: null });
+      this.setState({ exercise: '' });
+      this.props.addExercise();
+    } else {
+      this.props.sendError('enter all fields')
+    }
   }
 
   render() {
@@ -63,12 +68,12 @@ class AddWorkout extends Component {
               selectedValue={this.state.selectedCategory}
               onValueChange={this.onCategoryChange.bind(this)}
             >
-              <Item label="Chest" value="chest" />
-              <Item label="Back" value="back" />
-              <Item label="Shoulders" value="shoulders" />
-              <Item label="Legs" value="legs" />
-              <Item label="Arms" value="arms" />
-              <Item label="Abs" value="abs" />
+              <Item label="Chest" value="Chest" />
+              <Item label="Back" value="Back" />
+              <Item label="Shoulders" value="Shoulders" />
+              <Item label="Legs" value="Legs" />
+              <Item label="Arms" value="Arms" />
+              <Item label="Abs" value="Abs" />
             </Picker>
           </Item>
           <Item inlineLabel>
