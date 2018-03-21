@@ -15,7 +15,7 @@ export default class Workout extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps);
+    // console.log(nextProps);
     if (typeof nextProps.toggleModal === 'function') {
       this.setModalVisible(!this.state.modalVisible);
     }

@@ -29,7 +29,7 @@ export const ModalComponent = ({ modalVisible, toggleModal }) => {
 const styles = {
   modalContainer: {
     marginTop: 20,
-    flexDirection: 'column'
+    flexDirection: 'column',
   },
   closeView: {
     flexDirection: 'row',

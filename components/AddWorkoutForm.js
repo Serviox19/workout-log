@@ -89,7 +89,7 @@ class AddWorkout extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const { category, name } = state.exercises;
+  const { category, name } = state.exerciseForm;
 
   return { category, name };
 }

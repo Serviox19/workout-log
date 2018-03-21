@@ -7,32 +7,47 @@ import { exercisesFetch } from '../actions/ExerciseActions';
 class ExerciseList extends Component {
   constructor(props) {
     super(props);
+
+    this.state = { loading: true }
   }
 
   componentWillMount() {
     this.props.exercisesFetch();
+    // this.renderContent();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    // console.log(nextProps);
   }
 
   componentDidMount() {
     // console.log(this.props.exercises);
   }
 
-  //alternate rendering
   renderListItem() {
     const exercises = this.props.exercises;
-    return Object.keys(exercises).map(function(key) {
+    if (!exercises) {
       return (
-        <ListItem
-          onPress={() => console.log(key)}>
-          <Body>
-            <Text>{exercises[key].type.charAt(0).toUpperCase() + exercises[key].type.substr(1)}</Text>
-          </Body>
-          <Right>
-            <Icon ios='ios-arrow-forward' android='arrow-right' />
-          </Right>
-        </ListItem>
-      );
-    });
+        <Text>Nothing</Text>
+      )
+    } else {
+      return Object.keys(exercises).map(function(key) {
+        return (
+          <ListItem
+            onPress={() => console.log(key)}>
+            <Body>
+              <Text>{
+                //Capitalize first letter
+                exercises[key].type.charAt(0).toUpperCase() + exercises[key].type.substr(1)}
+              </Text>
+            </Body>
+            <Right>
+              <Icon ios='ios-arrow-forward' android='arrow-right' />
+            </Right>
+          </ListItem>
+        );
+      });
+    }
   }
 
   render() {
