@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Modal, TouchableOpacity } from 'react-native';
+import { Alert, View, Modal, TouchableOpacity } from 'react-native';
 import { Icon } from 'native-base';
 import AddWorkout from './AddWorkoutForm';
 
@@ -21,7 +21,12 @@ export const ModalComponent = ({ modalVisible, toggleModal }) => {
           </View>
           <AddWorkout
             addExercise={toggleModal}
-            sendError={(err) => console.log(err)}
+            sendError={(err) =>
+              Alert.alert(err, 'or not...',
+                [{text: 'OK'}],
+                { cancelable: false }
+              )
+            }
           />
         </View>
       </Modal>

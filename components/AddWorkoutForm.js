@@ -39,7 +39,7 @@ class AddWorkout extends Component {
       this.setState({ exercise: '' });
       this.props.addExercise();
     } else {
-      this.props.sendError('enter all fields')
+      this.props.sendError('Please enter all fields!')
     }
   }
 

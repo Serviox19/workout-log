@@ -3,17 +3,14 @@ import { View, Text } from 'react-native';
 import { Icon, List, ListItem, Left, Body, Right } from 'native-base';
 import { connect } from 'react-redux';
 import { exercisesFetch } from '../actions/ExerciseActions';
+import { Actions } from 'react-native-router-flux';
 
 class ExerciseList extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { loading: true }
-  }
-
-  componentWillMount() {
     this.props.exercisesFetch();
-    // this.renderContent();
+    this.state = { loading: true };
   }
 
   componentWillReceiveProps(nextProps) {
@@ -25,7 +22,7 @@ class ExerciseList extends Component {
   }
 
   renderListItem() {
-    const exercises = this.props.exercises;
+    const exercises = this.props.exercises.types;
     if (!exercises) {
       return (
         <Text>Nothing</Text>
@@ -34,12 +31,9 @@ class ExerciseList extends Component {
       return Object.keys(exercises).map(function(key) {
         return (
           <ListItem
-            onPress={() => console.log(key)}>
+            onPress={() => Actions.categoryList(key)}>
             <Body>
-              <Text>{
-                //Capitalize first letter
-                exercises[key].type.charAt(0).toUpperCase() + exercises[key].type.substr(1)}
-              </Text>
+              <Text>{exercises[key].name}</Text>
             </Body>
             <Right>
               <Icon ios='ios-arrow-forward' android='arrow-right' />
@@ -49,6 +43,8 @@ class ExerciseList extends Component {
       });
     }
   }
+
+
 
   render() {
     return (

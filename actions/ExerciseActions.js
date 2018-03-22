@@ -23,18 +23,20 @@ export const exerciseCreate = ({ type, exercise }) => {
 
     let dbRef = firebase.database().ref('/exercises');
 
-    dbRef.once("value").then(function(exerciseTypes) {
-      return exerciseTypes.forEach(function(snapshot) {
-        snapshot.forEach(function(data) {
-          console.log(data.key, data.val());
-          if (data.val() === type) {
-            console.log('just add the workout');
-          } else {
-            console.log('add new type');
-          }
-        });
-      });
-    });
+    dbRef.child('types').push({ name: type });
+
+    // dbRef.on("value").then(function(exerciseTypes) {
+    //   return exerciseTypes.forEach(function(snapshot) {
+    //     snapshot.forEach(function(data) {
+    //       console.log(data);
+    //       if (data.val() === type) {
+    //         console.log('just add the workout');
+    //       } else {
+    //         console.log('add new type');
+    //       }
+    //     });
+    //   });
+    // });
   }
 }
 

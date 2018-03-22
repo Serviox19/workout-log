@@ -3,6 +3,7 @@ import { Router, Scene, Modal } from 'react-native-router-flux';
 import Workout from './scenes/Workout';
 import Logs from './scenes/Logs';
 import Profile from './scenes/Profile';
+import CategoryWorkouts from './scenes/CategoryList';
 import { Actions } from 'react-native-router-flux';
 import { Button, Icon } from 'native-base';
 
@@ -15,18 +16,18 @@ class RouterComponent extends Component {
           <Scene
             key="workout"
             component={Workout}
-            title="Home"
+            title="Body Parts"
             renderBackButton={null}
             renderBackButton={() => (null)}
             onRight={() => Actions.refresh({ toggleModal: () => {} })}
             rightTitle="Add"
             rightButtonTextStyle={{ marginRight: 15 }}
-          >
-            <Scene
-              key="exercises-list"
-              title="Exercises"
-            />
-          </Scene>
+          />
+          <Scene
+            key="categoryList"
+            component={CategoryWorkouts}
+            title="Exercises"
+          />
           <Scene
             key="logs"
             component={Logs}

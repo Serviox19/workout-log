@@ -23,7 +23,6 @@ export default class Workout extends Component {
 
   setModalVisible(visible) {
     this.setState({ modalVisible: visible });
-    // console.log(visible);
   }
 
   render() {
