@@ -39,7 +39,7 @@ class AddCategory extends Component {
     return (
       <View>
         <Form>
-          <Item>
+          <Item style={{ justifyContent: 'center' }}>
             <Label style={{ color: "#000" }}>Category</Label>
             <Picker
               renderHeader={backAction =>
@@ -69,7 +69,7 @@ class AddCategory extends Component {
             </Picker>
           </Item>
           <Button onPress={this.addWorkout} style={styles.buttonStyle} block light>
-            <Text>Add Exercise</Text>
+            <Text>Add Category</Text>
           </Button>
         </Form>
       </View>

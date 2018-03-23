@@ -36,7 +36,7 @@ export const ModalComponent = ({ modalVisible, toggleModal }) => {
 
 const styles = {
   modalContainer: {
-    marginTop: 20,
+    marginTop: 25,
     flexDirection: 'column',
   },
   closeView: {

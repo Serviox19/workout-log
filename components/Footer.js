@@ -11,13 +11,15 @@ export default class FooterTabs extends Component {
             <Icon name="ios-list-box-outline" />
             <Text style={styles.textStyle}>Logs</Text>
           </Button>
-          <Button onPress={() => Actions.workout()}>
+          <Button onPress={() => {
+            if (Actions.currentScene === 'workout') {
+              return null;
+            } else {
+              Actions.popTo('workout');
+            }
+          }}>
             <Icon name="ios-add-circle-outline" />
             <Text style={styles.textStyle}>Workout</Text>
-          </Button>
-          <Button onPress={() => Actions.profile()}>
-            <Icon name="ios-contact-outline" />
-            <Text style={styles.textStyle}>Profile</Text>
           </Button>
         </FooterTab>
       </Footer>

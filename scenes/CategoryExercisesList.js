@@ -1,22 +1,19 @@
 import React, { Component } from 'react';
 import { View, Text, Button } from 'react-native';
 
-class CategoryWorkouts extends Component {
+class CategoryExercises extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {}
-  }
-
-  componentDidMount() {
-    console.log(this.props.data);
+    console.log(this.props);
   }
 
   render() {
     return (
       <View style={styles.viewStyle}>
         <View style={styles.container}>
-          <Text>Category Workouts List</Text>
+          <Text>{this.props.category}</Text>
+          <Text>{this.props.id}</Text>
         </View>
         <View style={styles.buttonView}>
           <Button
@@ -50,4 +47,4 @@ const styles = {
   }
 }
 
-export default CategoryWorkouts;
+export default CategoryExercises;

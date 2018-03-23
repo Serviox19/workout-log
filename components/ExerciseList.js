@@ -13,27 +13,24 @@ class ExerciseList extends Component {
     this.state = { loading: true };
   }
 
-  componentWillReceiveProps(nextProps) {
-    // console.log(nextProps);
-  }
-
   componentDidMount() {
-    // console.log(this.props.exercises);
+    console.log(this.props.exercises);
   }
 
   renderListItem() {
     const exercises = this.props.exercises.types;
-    if (!exercises) {
+    if (exercises == null) {
       return (
-        <Text>Loading</Text>
+        <Text style={{ textAlign: 'center' }}>Add Categories</Text>
       )
     } else {
-      return Object.keys(exercises).map(function(key) {
+      return Object.keys(exercises).map(function(data) {
         return (
           <ListItem
-            onPress={() => Actions.categoryList(key)}>
+            onPress={() => Actions.categoryList(
+              {id: data, category: exercises[data].name})}>
             <Body>
-              <Text>{exercises[key].name}</Text>
+              <Text>{exercises[data].name}</Text>
             </Body>
             <Right>
               <Icon ios='ios-arrow-forward' android='arrow-right' />
