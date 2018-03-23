@@ -1,6 +1,5 @@
 import {
-  EXERCISES_FETCH,
-  EXERCISE_CREATE
+  EXERCISES_FETCH
 } from '../actions/types';
 
 const INITIAL_STATE = {};

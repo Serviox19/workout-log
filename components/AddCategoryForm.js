@@ -2,16 +2,15 @@ import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { Header, Left, Right, Body, Icon, Title, Form, Item, Input, Label, Button, Picker } from 'native-base';
 import { connect } from 'react-redux';
-import { exerciseCreate } from '../actions/ExerciseActions';
+import { categoryCreate } from '../actions/ExerciseActions';
 import firebase from 'firebase';
 
-class AddWorkout extends Component {
+class AddCategory extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      selectedCategory: null,
-      exercise: ''
+      selectedCategory: null
     }
     this.addWorkout = this.addWorkout.bind(this);
   }
@@ -23,20 +22,13 @@ class AddWorkout extends Component {
     });
   }
 
-  //Get exercise text input
-  onExerciseChange(text) {
-    this.setState({ exercise: text });
-  }
-
   //Do something with the data
   addWorkout() {
     const type = this.state.selectedCategory;
-    const exercise = this.state.exercise;
 
-    if (type && exercise !== null) {
-      this.props.exerciseCreate({ type, exercise });
+    if (type !== null) {
+      this.props.categoryCreate({ type });
       this.setState({ selectedCategory: null });
-      this.setState({ exercise: '' });
       this.props.addExercise();
     } else {
       this.props.sendError('Please enter all fields!')
@@ -76,14 +68,6 @@ class AddWorkout extends Component {
               <Item label="Abs" value="Abs" />
             </Picker>
           </Item>
-          <Item inlineLabel>
-            <Label style={{ color: "#000" }}>Exercise</Label>
-            <Input
-              placeholder="Enter Exercise Name"
-              onChangeText={this.onExerciseChange.bind(this)}
-              value={this.state.exercise}
-            />
-          </Item>
           <Button onPress={this.addWorkout} style={styles.buttonStyle} block light>
             <Text>Add Exercise</Text>
           </Button>
@@ -94,12 +78,12 @@ class AddWorkout extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const { category, name } = state.exerciseForm;
+  const { category } = state.exerciseForm;
 
-  return { category, name };
+  return { category };
 }
 
-export default connect(mapStateToProps, { exerciseCreate })(AddWorkout);
+export default connect(mapStateToProps, { categoryCreate })(AddCategory);
 
 const styles = {
   viewStyle: {

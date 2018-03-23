@@ -27,6 +27,7 @@ class RouterComponent extends Component {
             key="categoryList"
             component={CategoryWorkouts}
             title="Exercises"
+            renderBackButton={() => (null)}
           />
           <Scene
             key="logs"

@@ -12,31 +12,17 @@ export const exercisesFetch = () => {
     .on('value', snapshot => {
       dispatch({ type: EXERCISES_FETCH, payload: snapshot.val() })
       Actions.workout({ type: 'reset' });
-    })
+    });
   }
 }
 
-export const exerciseCreate = ({ type, exercise }) => {
+export const categoryCreate = ({ type }) => {
   return (dispatch) => {
     console.log('Type: ' + type);
-    console.log('Exercise: ' + exercise);
 
     let dbRef = firebase.database().ref('/exercises');
 
     dbRef.child('types').push({ name: type });
-
-    // dbRef.on("value").then(function(exerciseTypes) {
-    //   return exerciseTypes.forEach(function(snapshot) {
-    //     snapshot.forEach(function(data) {
-    //       console.log(data);
-    //       if (data.val() === type) {
-    //         console.log('just add the workout');
-    //       } else {
-    //         console.log('add new type');
-    //       }
-    //     });
-    //   });
-    // });
   }
 }
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Alert, View, Modal, TouchableOpacity } from 'react-native';
 import { Icon } from 'native-base';
-import AddWorkout from './AddWorkoutForm';
+import AddCategory from './AddCategoryForm';
 
 export const ModalComponent = ({ modalVisible, toggleModal }) => {
   return (
@@ -19,7 +19,7 @@ export const ModalComponent = ({ modalVisible, toggleModal }) => {
                 style={{fontSize: 50, color: 'black'}}/>
             </TouchableOpacity>
           </View>
-          <AddWorkout
+          <AddCategory
             addExercise={toggleModal}
             sendError={(err) =>
               Alert.alert(err, 'or not...',

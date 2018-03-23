@@ -25,7 +25,7 @@ class ExerciseList extends Component {
     const exercises = this.props.exercises.types;
     if (!exercises) {
       return (
-        <Text>Nothing</Text>
+        <Text>Loading</Text>
       )
     } else {
       return Object.keys(exercises).map(function(key) {

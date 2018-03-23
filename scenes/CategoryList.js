@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Button } from 'react-native';
 
 class CategoryWorkouts extends Component {
   constructor(props) {
@@ -18,19 +18,35 @@ class CategoryWorkouts extends Component {
         <View style={styles.container}>
           <Text>Category Workouts List</Text>
         </View>
+        <View style={styles.buttonView}>
+          <Button
+            onPress={() => console.log(`add exercise to ${this.props.data}`)}
+            color="#FFFFFF"
+            title="Add Exercise"
+          />
+        </View>
       </View>
     );
   }
 }
 
 const styles = {
-  container: {
-    paddingTop: 20
-  },
   viewStyle: {
     flex: 1,
     flexDirection: 'column',
     alignItems: 'center'
+  },
+  container: {
+    paddingTop: 20
+  },
+  buttonView: {
+    position: 'absolute',
+    bottom: 0,
+    width: '100%',
+    height: 50,
+    backgroundColor: '#007AFF',
+    flexDirection: 'column',
+    justifyContent: 'center'
   }
 }
 
