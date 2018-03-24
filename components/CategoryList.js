@@ -2,35 +2,35 @@ import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { Icon, List, ListItem, Left, Body, Right } from 'native-base';
 import { connect } from 'react-redux';
-import { exercisesFetch } from '../actions/ExerciseActions';
+import { categoriesFetch } from '../actions/ExerciseActions';
 import { Actions } from 'react-native-router-flux';
 
-class ExerciseList extends Component {
+class CategoryList extends Component {
   constructor(props) {
     super(props);
 
-    this.props.exercisesFetch();
+    this.props.categoriesFetch();
     this.state = { loading: true };
   }
 
   componentDidMount() {
-    console.log(this.props.exercises);
+    console.log(this.props.categories);
   }
 
   renderListItem() {
-    const exercises = this.props.exercises.types;
-    if (exercises == null) {
+    const categories = this.props.categories.types;
+    if (categories == null) {
       return (
         <Text style={{ textAlign: 'center' }}>Add Categories</Text>
       )
     } else {
-      return Object.keys(exercises).map(function(data) {
+      return Object.keys(categories).map(function(data) {
         return (
           <ListItem
             onPress={() => Actions.categoryList(
-              {id: data, category: exercises[data].name})}>
+              {id: data, category: categories[data].name})}>
             <Body>
-              <Text>{exercises[data].name}</Text>
+              <Text>{categories[data].name}</Text>
             </Body>
             <Right>
               <Icon ios='ios-arrow-forward' android='arrow-right' />
@@ -56,10 +56,10 @@ class ExerciseList extends Component {
 }
 
 const mapStateToProps = state => {
-  const exercises = state.exercises;
+  const categories = state.exercises;
 
-  return { exercises };
+  return { categories };
 }
 
 export default
-connect(mapStateToProps, { exercisesFetch })(ExerciseList);
+connect(mapStateToProps, { categoriesFetch })(CategoryList);

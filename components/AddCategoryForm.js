@@ -29,7 +29,7 @@ class AddCategory extends Component {
     if (type !== null) {
       this.props.categoryCreate({ type });
       this.setState({ selectedCategory: null });
-      this.props.addExercise();
+      this.props.addCategory();
     } else {
       this.props.sendError('Please enter all fields!')
     }

@@ -1,12 +1,16 @@
-import { EXERCISE_CREATE } from '../actions/types';
+import {
+  CATEGORY_CREATE,
+  EXERCISE_CREATE
+} from '../actions/types';
 
 const INITIAL_STATE = {};
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case EXERCISE_CREATE:
-    console.log(action);
       return action.payload;
+    case CATEGORY_CREATE:
+      return INITIAL_STATE;
     default:
       return state;
   }

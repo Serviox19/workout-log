@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Container, Content, Text, Icon } from 'native-base';
 import FooterTabs from '../components/Footer';
 import { Actions } from 'react-native-router-flux';
-import ExerciseList from '../components/ExerciseList';
+import CategoryList from '../components/CategoryList';
 import { ModalComponent } from '../components/Modal';
 
 export default class Workout extends Component {
@@ -29,7 +29,7 @@ export default class Workout extends Component {
     return (
       <Container style={{ paddingTop: 20 }}>
         <Content padder>
-          <ExerciseList />
+          <CategoryList />
           <ModalComponent
             modalVisible={this.state.modalVisible}
             toggleModal={() => this.setModalVisible(!this.state.modalVisible)}

@@ -20,7 +20,7 @@ export const ModalComponent = ({ modalVisible, toggleModal }) => {
             </TouchableOpacity>
           </View>
           <AddCategory
-            addExercise={toggleModal}
+            addCategory={toggleModal}
             sendError={(err) =>
               Alert.alert(err, 'or not...',
                 [{text: 'OK'}],

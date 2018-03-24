@@ -3,10 +3,11 @@ import { Actions } from 'react-native-router-flux';
 
 import {
   EXERCISES_FETCH,
-  EXERCISE_CREATE
+  EXERCISE_CREATE,
+  CATEGORY_CREATE,
 } from './types';
 
-export const exercisesFetch = () => {
+export const categoriesFetch = () => {
   return (dispatch) => {
     firebase.database().ref('/exercises')
     .on('value', snapshot => {
@@ -20,12 +21,27 @@ export const categoryCreate = ({ type }) => {
   return (dispatch) => {
     console.log('Type: ' + type);
 
-    let dbRef = firebase.database().ref('/exercises');
-
-    dbRef.child('types').push({ name: type });
+    let dbRef = firebase.database().ref('/exercises/types')
+    .push({ name: type })
+    .then(() => {
+      dispatch({ CATEGORY_CREATE });
+      Actions.categoryList({ type: 'reset' });
+    });
   }
 }
 
-export const exerciseSave = () => {}
+export const exerciseCreate = ({ id, exercise }) => {
+  return (dispatch) => {
+    console.log(`id: ${id}, exercise: ${exercise}`);
 
-export const exerciseDelete = () => {}
+    let dbRef = firebase.database().ref(`/exercises/types/${id}/workouts`);
+
+    dbRef.push.set({
+      name: exercise
+    });
+  }
+}
+
+export const workoutsFetch = () => {
+
+}
