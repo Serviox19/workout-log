@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Text } from 'react-native';
 import { Container, Content } from 'native-base';
 import FooterTabs from '../components/Footer';
-import ExerciseLogs from '../components/ExerciseLogs';
 
 export default class Logs extends Component {
   render() {

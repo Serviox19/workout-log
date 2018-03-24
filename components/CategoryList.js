@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { Icon, List, ListItem, Left, Body, Right } from 'native-base';
 import { connect } from 'react-redux';
-import { categoriesFetch } from '../actions/ExerciseActions';
+import { categoriesFetch } from '../actions/CategoryActions';
 import { Actions } from 'react-native-router-flux';
 
 class CategoryList extends Component {
@@ -56,7 +56,7 @@ class CategoryList extends Component {
 }
 
 const mapStateToProps = state => {
-  const categories = state.exercises;
+  const categories = state.categories;
 
   return { categories };
 }

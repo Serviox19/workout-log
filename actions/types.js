@@ -1,4 +1,5 @@
 export const CATEGORY_CREATE = 'category_create';
+export const CATEGORY_FETCH = 'category_fetch';
 
 export const EXERCISES_FETCH = 'exercises_fetch';
 export const EXERCISE_CREATE = 'exercises_create';

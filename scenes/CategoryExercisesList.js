@@ -17,7 +17,7 @@ class CategoryExercises extends Component {
         </View>
         <View style={styles.buttonView}>
           <Button
-            onPress={() => console.log(`add exercise to ${this.props.data}`)}
+            onPress={() => console.log(`add exercise to ${this.props.category}`)}
             color="#FFFFFF"
             title="Add Exercise"
           />
