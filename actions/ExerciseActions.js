@@ -17,3 +17,9 @@ export const exerciseCreate = ({ id, exercise }) => {
     });
   }
 }
+
+export const exercisesFetch = () => {
+  return (dispatch) => {
+    
+  }
+}
