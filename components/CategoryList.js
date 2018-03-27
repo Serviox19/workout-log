@@ -14,7 +14,7 @@ class CategoryList extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props.categories);
+    // console.log(this.props.categories);
   }
 
   renderListItem() {

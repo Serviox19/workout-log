@@ -28,7 +28,6 @@ export const exercisesFetch = ({ categoryId }) => {
     firebase.database().ref(`/exercises/types/${categoryId}/workouts`)
     .on('value', snapshot => {
       dispatch({ type: EXERCISES_FETCH, payload: snapshot.val() });
-      Actions.categoryExercises({ type: 'reset' });
     });
   }
 }

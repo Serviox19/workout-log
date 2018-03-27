@@ -13,8 +13,6 @@ class AddExercise extends Component {
     this.state = {
       exercise: ''
     }
-
-    console.log(this.props);
   }
 
   onInputChange(exercise) {
@@ -52,7 +50,7 @@ class AddExercise extends Component {
             </TouchableOpacity>
           </View>
           <View style={styles.modalContent}>
-            <Text>Add Exercise to {`${this.props.category}`}</Text>
+            <Text>Add Exercise to {`${this.props.categoryName}`}</Text>
             <Form>
               <Item
                 inlineLabel

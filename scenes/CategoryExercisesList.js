@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import AddExercise from '../components/AddExerciseForm';
+import { connect } from 'react-redux';
+import { exercisesFetch } from '../actions/ExerciseActions';
 
 class CategoryExercises extends Component {
   constructor(props) {
     super(props);
+
+    const categoryId = this.props.id;
+    this.props.exercisesFetch({ categoryId });
 
     this.state = {
       isModalVisible: false
@@ -15,12 +20,26 @@ class CategoryExercises extends Component {
     this.setState({ isModalVisible: !this.state.isModalVisible });
   }
 
+  renderExercises() {
+    const exercises = this.props.exercises;
+    if (exercises === null) {
+      return (
+        <Text>Add some Exercises</Text>
+      )
+    } else {
+      return Object.keys(exercises).map(function(key, index) {
+        return (
+          <Text>{exercises[key].name}</Text>
+        )
+      });
+    }
+  }
+
   render() {
     return (
       <View style={styles.viewStyle}>
         <View style={styles.container}>
-          <Text>{this.props.category}</Text>
-          <Text>{this.props.id}</Text>
+          {this.renderExercises()}
         </View>
         <View style={styles.buttonView}>
           <TouchableOpacity
@@ -32,6 +51,7 @@ class CategoryExercises extends Component {
           modalVisible={this.state.isModalVisible}
           modalToggle={this.toggleModal.bind(this)}
           categoryId={this.props.id}
+          categoryName={this.props.category}
         />
       </View>
     );
@@ -58,4 +78,11 @@ const styles = {
   }
 }
 
-export default CategoryExercises;
+const mapStateToProps = state => {
+  const exercises = state.exercises;
+
+  return { exercises };
+}
+
+export default
+connect(mapStateToProps, { exercisesFetch })(CategoryExercises);
