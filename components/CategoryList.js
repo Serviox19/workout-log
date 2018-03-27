@@ -28,7 +28,7 @@ class CategoryList extends Component {
         return (
           <ListItem
             onPress={() => Actions.categoryExercises(
-              {id: data, category: categories[data].name})}>
+              {title: `${categories[data].name} Exercises`, id: data, category: categories[data].name})}>
             <Body>
               <Text>{categories[data].name}</Text>
             </Body>

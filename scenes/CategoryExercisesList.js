@@ -4,6 +4,7 @@ import { Button, Icon, Form, Item, Input, Label, } from 'native-base';
 import Modal from 'react-native-modal';
 import { connect } from 'react-redux';
 import { exerciseCreate } from '../actions/ExerciseActions.js';
+import { Actions } from 'react-native-router-flux';
 
 class CategoryExercises extends Component {
   constructor(props) {
