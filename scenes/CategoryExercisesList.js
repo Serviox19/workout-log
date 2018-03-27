@@ -2,18 +2,39 @@ import React, { Component } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { Button, Icon, Form, Item, Input, Label, } from 'native-base';
 import Modal from 'react-native-modal';
+import { connect } from 'react-redux';
+import { exerciseCreate } from '../actions/ExerciseActions.js';
 
 class CategoryExercises extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      isModalVisible: false
+      isModalVisible: false,
+      exercise: ''
     }
   }
 
   toggleModal() {
     this.setState({ isModalVisible: !this.state.isModalVisible });
+  }
+
+  onInputChange(exercise) {
+    this.setState({ exercise });
+  }
+
+  addExercise() {
+    let categoryId = this.props.id;
+    let exercise = this.state.exercise;
+
+    if (this.state.exercise === '') {
+      console.log('error: Add an exercise');
+    } else {
+      this.props.exerciseCreate({ categoryId, exercise });
+      console.log(`adding ${this.state.exercise} to ${this.props.id}`);
+      this.setState({ exercise: '' });
+      this.toggleModal();
+    }
   }
 
   render() {
@@ -25,10 +46,11 @@ class CategoryExercises extends Component {
         </View>
         <View style={styles.buttonView}>
           <TouchableOpacity
-            onPress={() => console.log(`add exercise to ${this.props.category}`), this.toggleModal.bind(this)}>
+            onPress={this.toggleModal.bind(this)}>
             <Text style={{ color: '#FFFFFF', textAlign: 'center' }}>Add Exercise</Text>
           </TouchableOpacity>
         </View>
+        {/* add exercise Modal */}
         <Modal
           isVisible={this.state.isModalVisible}
           >
@@ -37,17 +59,25 @@ class CategoryExercises extends Component {
               <TouchableOpacity
                 style={{ alignSelf: 'flex-end' }}
                 onPress={this.toggleModal.bind(this)}>
-                <Icon name='ios-close'
-                  style={{ fontSize: 50, color: 'black' }}/>
+                <Icon
+                  name='ios-close'
+                  style={{ fontSize: 50, color: 'black' }}
+                />
               </TouchableOpacity>
             </View>
             <View style={styles.modalContent}>
               <Text>Add Exercise to {`${this.props.category}`}</Text>
               <Form>
-                <Item style={{ marginBottom: 10 }} inlineLabel>
-                  <Input placeholder="Exercise Name" />
+                <Item
+                  inlineLabel
+                  style={{ marginBottom: 10, borderBottomColor: '#000' }}>
+                  <Input
+                    placeholder="Exercise Name"
+                    onChangeText={(text) => this.onInputChange(text)}
+                    value={this.state.exercise}
+                  />
                 </Item>
-                <Button onPress={() => console.log(`adding exercise to ${this.props.id}`)}
+                <Button onPress={this.addExercise.bind(this)}
                   full
                   primary>
                   <Text style={{ color: '#FFFFFF' }}>Add</Text>
@@ -80,7 +110,7 @@ const styles = {
     justifyContent: 'center'
   },
   modalView: {
-    height: '50%',
+    height: '40%',
     backgroundColor: '#d3d3d3',
     flexDirection: 'column',
     borderRadius: 4
@@ -88,14 +118,24 @@ const styles = {
   closeButtonWrapper: {
     flexDirection: 'row',
     justifyContent: 'flex-end',
-    marginTop: 5,
+    marginTop: 'auto',
+    marginBottom: 'auto',
     marginRight: 15,
     marginBottom: 10
   },
   modalContent: {
+    flexDirection: 'column',
     marginLeft: 15,
-    marginRight: 15
+    marginRight: 15,
+    flex: 1
   }
 }
 
-export default CategoryExercises;
+const mapStateToProps = state => {
+  const exercises = state.exerciseForm;
+
+  return { exercises };
+}
+
+export default
+connect(mapStateToProps, { exerciseCreate })(CategoryExercises);

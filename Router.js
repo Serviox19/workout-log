@@ -23,7 +23,7 @@ class RouterComponent extends Component {
             rightButtonTextStyle={{ marginRight: 15 }}
           />
           <Scene
-            key="categoryList"
+            key="categoryExercises"
             component={CategoryExercises}
             title={this.props.category}
             renderBackButton={() => (null)}

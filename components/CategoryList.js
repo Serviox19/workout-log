@@ -27,7 +27,7 @@ class CategoryList extends Component {
       return Object.keys(categories).map(function(data) {
         return (
           <ListItem
-            onPress={() => Actions.categoryList(
+            onPress={() => Actions.categoryExercises(
               {id: data, category: categories[data].name})}>
             <Body>
               <Text>{categories[data].name}</Text>

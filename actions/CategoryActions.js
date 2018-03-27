@@ -20,7 +20,7 @@ export const categoryCreate = ({ type }) => {
   return (dispatch) => {
     console.log('Type: ' + type);
 
-    let dbRef = firebase.database().ref('/exercises/types')
+    firebase.database().ref('/exercises/types')
     .push({ name: type })
     .then(() => {
       dispatch({ CATEGORY_CREATE });
