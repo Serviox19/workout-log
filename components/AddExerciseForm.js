@@ -26,10 +26,10 @@ class AddExercise extends Component {
     if (this.state.exercise === '') {
       console.log('error: Add an exercise');
     } else {
-      this.props.exerciseCreate({ categoryId, exercise });
-      console.log(`adding ${this.state.exercise} to ${this.props.id}`);
-      this.setState({ exercise: '' });
       this.props.modalToggle;
+      this.props.exerciseCreate({ categoryId, exercise });
+      console.log(`adding ${this.state.exercise} to ${this.props.categoryName}`);
+      this.setState({ exercise: '' });
     }
   }
 

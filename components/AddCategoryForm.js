@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { Header, Left, Right, Body, Icon, Title, Form, Item, Input, Label, Button, Picker } from 'native-base';
 import { connect } from 'react-redux';
-import { categoryCreate } from '../actions/ExerciseActions';
+import { categoryCreate } from '../actions/CategoryActions';
 import firebase from 'firebase';
 
 class AddCategory extends Component {

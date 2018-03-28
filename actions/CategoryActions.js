@@ -24,7 +24,7 @@ export const categoryCreate = ({ type }) => {
     .push({ name: type })
     .then(() => {
       dispatch({ CATEGORY_CREATE });
-      Actions.categoryList({ type: 'reset' });
+      Actions.workout({ type: 'reset' });
     });
   }
 }

@@ -8,7 +8,6 @@ import {
 
 export const exerciseCreate = ({ categoryId, exercise }) => {
   return (dispatch) => {
-    console.log(` Actions => id: ${categoryId}, exercise: ${exercise}`);
 
     firebase.database().ref(`/exercises/types/${categoryId}/workouts`)
     .push({
