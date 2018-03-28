@@ -3,7 +3,8 @@ import { Actions } from 'react-native-router-flux';
 
 import {
   EXERCISES_FETCH,
-  EXERCISE_CREATE
+  EXERCISE_CREATE,
+  EXERCISE_DELETE
 } from './types';
 
 export const exerciseCreate = ({ categoryId, exercise }) => {
@@ -28,5 +29,11 @@ export const exercisesFetch = ({ categoryId }) => {
     .on('value', snapshot => {
       dispatch({ type: EXERCISES_FETCH, payload: snapshot.val() });
     });
+  }
+}
+
+export const exerciseDelete = ({ key }) => {
+  return (dispatch) => {
+    
   }
 }

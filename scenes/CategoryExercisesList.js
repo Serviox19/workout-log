@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-import { SwipeRow, Button, Icon, List, ListItem } from 'native-base';
+import { SwipeRow, Button, Icon, List } from 'native-base';
 import AddExercise from '../components/AddExerciseForm';
 import { connect } from 'react-redux';
 import { exercisesFetch } from '../actions/ExerciseActions';
@@ -21,6 +21,8 @@ class CategoryExercises extends Component {
     this.setState({ isModalVisible: !this.state.isModalVisible });
   }
 
+  deleteExercise(key) {}
+
   renderExercises() {
     const exercises = this.props.exercises;
     if (exercises === null) {
@@ -30,24 +32,26 @@ class CategoryExercises extends Component {
     } else {
       return Object.keys(exercises).map(function(key, index) {
         return (
-          <ListItem style={{ border: 'none' }}>
-            <SwipeRow
-              style={{ width: '100%', justifyContent: 'center' }}
-              leftOpenValue={75}
-              rightOpenValue={-75}
-              disableRightSwipe={true}
-              body={
-                <View onPress={() => console.log(exercises[key].name)}>
-                  <Text>{exercises[key].name}</Text>
-                </View>
-              }
-              right={
-                <Button danger onPress={() => alert(`Delete: ${key}`)}>
-                  <Icon active name="trash" />
-                </Button>
-              }
-            />
-          </ListItem>
+          <SwipeRow
+            style={{ width: '100%', justifyContent: 'center' }}
+            leftOpenValue={75}
+            rightOpenValue={-75}
+            left={
+              <Button danger onPress={() => alert(`Delete: ${key}`)}>
+                <Icon active name="trash" />
+              </Button>
+            }
+            body={
+              <View>
+                <Text>{exercises[key].name}</Text>
+              </View>
+            }
+            right={
+              <Button info onPress={() => alert(`Go to ${exercises[key].name} logs`)}>
+                <Icon active name="list" />
+              </Button>
+            }
+          />
         )
       });
     }
