@@ -18,7 +18,6 @@ class CategoryExercises extends Component {
     this.state = {
       isModalVisible: false
     }
-    console.log(this.props);
 
     this.deleteExercise = this.deleteExercise.bind(this);
   }

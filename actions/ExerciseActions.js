@@ -12,8 +12,7 @@ export const exerciseCreate = ({ categoryId, exercise }) => {
 
     firebase.database().ref(`/exercises/types/${categoryId}/workouts`)
     .push({
-      name: exercise,
-      logs: {}
+      name: exercise
     })
     .then(() => {
       dispatch({ EXERCISE_CREATE });
@@ -21,9 +20,15 @@ export const exerciseCreate = ({ categoryId, exercise }) => {
   }
 }
 
+export const exerciseLogCreate = () => {
+  return (dispatch) => {
+    
+  }
+}
+
 export const exercisesFetch = ({ categoryId }) => {
   return (dispatch) => {
-    console.log(` category: ${categoryId} `);
+    console.log(`Fetching exercises from category: ${categoryId} `);
 
     firebase.database().ref(`/exercises/types/${categoryId}/workouts`)
     .on('value', snapshot => {
