@@ -32,8 +32,15 @@ export const exercisesFetch = ({ categoryId }) => {
   }
 }
 
-export const exerciseDelete = ({ key }) => {
+export const exerciseDelete = ({ categoryId, key }) => {
   return (dispatch) => {
-    
+    console.log(`removing: ${key} from ${categoryId}`);
+
+    const uri = `/exercises/types/${categoryId}/workouts/${key}`;
+    firebase.database().ref(uri)
+    .remove()
+    .then(() => {
+      dispatch({ type: EXERCISE_DELETE });
+    });
   }
 }

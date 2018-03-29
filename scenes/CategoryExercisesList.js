@@ -3,58 +3,66 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import { SwipeRow, Button, Icon, List } from 'native-base';
 import AddExercise from '../components/AddExerciseForm';
 import { connect } from 'react-redux';
-import { exercisesFetch } from '../actions/ExerciseActions';
+import {
+  exercisesFetch,
+  exerciseDelete
+} from '../actions/ExerciseActions';
 
 class CategoryExercises extends Component {
   constructor(props) {
     super(props);
 
-    const categoryId = this.props.id;
+    let categoryId = this.props.id;
     this.props.exercisesFetch({ categoryId });
 
     this.state = {
       isModalVisible: false
     }
+    console.log(this.props);
+
+    this.deleteExercise = this.deleteExercise.bind(this);
   }
 
   toggleModal() {
     this.setState({ isModalVisible: !this.state.isModalVisible });
   }
 
-  deleteExercise(key) {}
+  deleteExercise(categoryId, key) {
+    console.log(`Remove Category: ${categoryId}, Key: ${key}`);
+    this.props.exerciseDelete({ categoryId, key });
+  }
 
   renderExercises() {
+    const _this = this;
     const exercises = this.props.exercises;
-    if (exercises === null) {
+    const categoryId = this.props.id;
+
+    return Object.keys(exercises).map(function(key, index) {
       return (
-        <Text>Add some Exercises</Text>
+        <SwipeRow
+          style={{ width: '100%', justifyContent: 'center' }}
+          leftOpenValue={75}
+          rightOpenValue={-75}
+          left={
+            <Button
+              danger
+              onPress={_this.deleteExercise.bind(this, categoryId, key)}>
+              <Icon active name="trash" />
+            </Button>
+          }
+          body={
+            <View>
+              <Text>{exercises[key].name}</Text>
+            </View>
+          }
+          right={
+            <Button info onPress={() => alert(`Go to ${exercises[key].name} logs`)}>
+              <Icon active name="list" />
+            </Button>
+          }
+        />
       )
-    } else {
-      return Object.keys(exercises).map(function(key, index) {
-        return (
-          <SwipeRow
-            style={{ width: '100%', justifyContent: 'center' }}
-            leftOpenValue={75}
-            rightOpenValue={-75}
-            left={
-              <Button danger onPress={() => alert(`Delete: ${key}`)}>
-                <Icon active name="trash" />
-              </Button>
-            }
-            body={
-              <View>
-                <Text>{exercises[key].name}</Text>
-              </View>
-            }
-            right={
-              <Button info onPress={() => alert(`Go to ${exercises[key].name} logs`)}>
-                <Icon active name="list" />
-              </Button>
-            }
-          />
-        )
-      });
-    }
+    });
   }
 
   render() {
@@ -104,10 +112,12 @@ const styles = {
 }
 
 const mapStateToProps = state => {
-  const exercises = state.exercises;
+  const exercises  = state.exercises;
 
   return { exercises };
 }
 
 export default
-connect(mapStateToProps, { exercisesFetch })(CategoryExercises);
+connect(mapStateToProps, {
+  exercisesFetch,
+  exerciseDelete })(CategoryExercises);

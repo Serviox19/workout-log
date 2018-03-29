@@ -15,7 +15,7 @@ class RouterComponent extends Component {
           <Scene
             key="workout"
             component={Workout}
-            title="Body Parts"
+            title="Muscle Groups"
             renderBackButton={null}
             renderBackButton={() => (null)}
             onRight={() => Actions.refresh({ toggleModal: () => {} })}

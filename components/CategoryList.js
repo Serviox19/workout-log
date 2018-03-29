@@ -13,10 +13,6 @@ class CategoryList extends Component {
     this.state = { loading: true };
   }
 
-  componentDidMount() {
-    // console.log(this.props.categories);
-  }
-
   renderListItem() {
     const categories = this.props.categories.types;
     if (categories == null) {
