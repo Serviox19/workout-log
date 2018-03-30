@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Router, Scene, Modal } from 'react-native-router-flux';
 import Workout from './scenes/Workout';
-import Logs from './scenes/Logs';
+import CalendarLogs from './scenes/CalendarLogs';
 import CategoryExercises from './scenes/CategoryExercisesList';
+import LogsList from './components/ExerciseLogsList';
 import { Actions } from 'react-native-router-flux';
 import { Button, Icon } from 'native-base';
 
@@ -25,12 +26,17 @@ class RouterComponent extends Component {
           <Scene
             key="categoryExercises"
             component={CategoryExercises}
-            title={this.props.category}
+            renderBackButton={() => (null)}
+          />
+          <Scene
+            key="exerciseLogs"
+            component={LogsList}
+            title={`Exercises Logs`}
             renderBackButton={() => (null)}
           />
           <Scene
             key="logs"
-            component={Logs}
+            component={CalendarLogs}
             title="Logs"
             renderBackButton={null}
             renderBackButton={() => null}

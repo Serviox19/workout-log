@@ -3,6 +3,7 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import { SwipeRow, Button, Icon, List } from 'native-base';
 import AddExercise from '../components/AddExerciseForm';
 import { connect } from 'react-redux';
+import { Actions } from 'react-native-router-flux';
 import {
   exercisesFetch,
   exerciseDelete
@@ -55,7 +56,12 @@ class CategoryExercises extends Component {
             </View>
           }
           right={
-            <Button info onPress={() => alert(`Go to ${exercises[key].name} logs`)}>
+            <Button info
+              onPress={() => Actions.exerciseLogs({
+                title: `${exercises[key].name} Logs`,
+                category: categoryId,
+                exerciseKey: key
+              })}>
               <Icon active name="list" />
             </Button>
           }

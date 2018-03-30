@@ -5,7 +5,7 @@ import FooterTabs from '../components/Footer';
 import CalendarPicker from 'react-native-calendar-picker';
 import moment from 'moment';
 
-class Logs extends Component {
+class CalendarLogs extends Component {
   constructor(props) {
     super(props);
 
@@ -43,4 +43,4 @@ class Logs extends Component {
   }
 }
 
-export default Logs;
+export default CalendarLogs;
