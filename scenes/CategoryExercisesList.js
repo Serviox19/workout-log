@@ -66,7 +66,7 @@ class CategoryExercises extends Component {
             </Button>
           }
         />
-      )
+      );
     });
   }
 

@@ -20,12 +20,6 @@ export const exerciseCreate = ({ categoryId, exercise }) => {
   }
 }
 
-export const exerciseLogCreate = () => {
-  return (dispatch) => {
-    
-  }
-}
-
 export const exercisesFetch = ({ categoryId }) => {
   return (dispatch) => {
     console.log(`Fetching exercises from category: ${categoryId} `);
