@@ -40,6 +40,7 @@ class CategoryExercises extends Component {
     return Object.keys(exercises).map(function(key, index) {
       return (
         <SwipeRow
+          key={key}
           style={{ width: '100%', justifyContent: 'center' }}
           leftOpenValue={75}
           rightOpenValue={-75}

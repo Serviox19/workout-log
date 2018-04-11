@@ -10,23 +10,27 @@ class CategoryList extends Component {
     super(props);
 
     this.props.categoriesFetch();
-    this.state = { loading: true };
+    this.state = {
+      loading: true,
+      categories: props.categories || ''
+    };
   }
 
   renderListItem() {
-    const categories = this.props.categories.types;
-    if (categories == null) {
+    const categories = this.state.categories;
+    if (categories === null) {
       return (
         <Text style={{ textAlign: 'center' }}>Add Categories</Text>
       )
     } else {
-      return Object.keys(categories).map(function(data) {
+      return Object.keys(categories).map(function(key, index) {
         return (
           <ListItem
+            key={key}
             onPress={() => Actions.categoryExercises(
-              {title: `${categories[data].name} Exercises`, id: data, category: categories[data].name})}>
+              {title: `${categories[key].name} Exercises`, id: key, category: categories[key].name})}>
             <Body>
-              <Text>{categories[data].name}</Text>
+              <Text>{categories[key].name}</Text>
             </Body>
             <Right>
               <Icon ios='ios-arrow-forward' android='arrow-right' />
@@ -40,6 +44,7 @@ class CategoryList extends Component {
 
 
   render() {
+    const { loading } = this.state;
     return (
       <View>
         <List
@@ -52,7 +57,7 @@ class CategoryList extends Component {
 }
 
 const mapStateToProps = state => {
-  const categories = state.categories;
+  const categories = state.categories.types;
 
   return { categories };
 }
